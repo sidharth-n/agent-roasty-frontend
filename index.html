@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/roastfriend.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+
+    <!-- Primary Meta Tags -->
+    <title>Agent Roasty - Born to roast</title>
+    <meta name="title" content="RoastYourFriend - AI Powered Roast Calls" />
+    <meta
+      name="description"
+      content="Experience hilarious AI-powered roast calls! Our AI agents deliver personalized roasts to your friends. Safe, funny, and memorable pranks."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://roastyourfriend.com" />
+    <meta
+      property="og:title"
+      content="RoastYourFriend - AI Powered Roast Calls"
+    />
+    <meta
+      property="og:description"
+      content="Experience hilarious AI-powered roast calls! Our AI agents deliver personalized roasts to your friends. Safe, funny, and memorable pranks."
+    />
+    <meta property="og:image" content="/images/roast.jpeg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://roastyourfriend.com" />
+    <meta
+      property="twitter:title"
+      content="RoastYourFriend - AI Powered Roast Calls"
+    />
+    <meta
+      property="twitter:description"
+      content="Experience hilarious AI-powered roast calls! Our AI agents deliver personalized roasts to your friends. Safe, funny, and memorable pranks."
+    />
+    <meta property="twitter:image" content="/images/roast.jpeg" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#ff3e3e" />
+
+    <!-- PWA Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-touch-fullscreen" content="yes" />
+
+    <!-- Razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Prevent Right Click and Double Tap Zoom -->
+    <script>
+      let lastTap = 0
+
+      document.addEventListener("contextmenu", e => e.preventDefault())
+
+      document.addEventListener(
+        "touchstart",
+        e => {
+          if (e.touches.length > 1) {
+            e.preventDefault()
+          }
+        },
+        { passive: false }
+      )
+
+      document.addEventListener(
+        "touchend",
+        e => {
+          const now = Date.now()
+          if (now - lastTap < 300) {
+            e.preventDefault()
+          }
+          lastTap = now
+        },
+        { passive: false }
+      )
+    </script>
+  </body>
+</html>
