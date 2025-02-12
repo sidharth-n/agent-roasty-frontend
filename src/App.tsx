@@ -9,6 +9,7 @@ import HeroAwards from "./components/HeroAwards"
 import { BACKGROUND_IMAGES } from "./config/images"
 import BackToTop from "./components/BackToTop"
 import HowItWorks from "./components/HowItWorks"
+import WhatCanItDo from "./components/WhatCanItDo"
 
 import {
   INITIAL_ROAST_COUNT,
@@ -395,6 +396,9 @@ export default function App() {
           />
         )}
       </section>
+
+      {/* What Can It Do Section */}
+      <WhatCanItDo />
 
       {/* How It Works Section */}
       <HowItWorks />
