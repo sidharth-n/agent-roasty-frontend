@@ -51,11 +51,11 @@ const HowItWorks: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-[#ff3e3e]/10 rounded-lg border border-[#ff3e3e]/30 text-center">
+        {/*  <div className="mt-8 p-4 bg-[#ff3e3e]/10 rounded-lg border border-[#ff3e3e]/30 text-center">
           <p className="text-sm font-medium text-gray-300">
             Powered by Safe Global, elizaOS & Venice API
           </p>
-        </div>
+        </div> */}
       </div>
     </section>
   )

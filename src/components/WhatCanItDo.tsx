@@ -7,8 +7,8 @@ const features = [
     icon: MessageSquare,
     title: "TEXT ROASTS",
     description:
-      "Unleash savage AI-powered roasts in your community. Agent Roasty delivers personalized burns, witty comebacks, and hilarious responses that adapt to your community's style.",
-    techDetail: "Powered by elizaOS + Venice API",
+      "Roasty is trained on a vast library of Twitter and YouTube transcripts to craft responses that embody the essence of a playful roast culture. Prepare for clever comebacks, biting humor, and a dash of sarcasm that resonates with your community's unique vibe.",
+    // Tech: elizaOS agent framework + Venice API for text generation
     bgGradient: "from-[#ff3e3e]/20 via-black to-transparent",
   },
   {
@@ -16,7 +16,7 @@ const features = [
     title: "MEME FACTORY",
     description:
       "Generate custom memes on the fly. Turn conversations into viral-worthy content with AI-generated images that perfectly capture your community's inside jokes.",
-    techDetail: "Using Venice API Image Models",
+    // Tech: Venice API image models for meme generation
     bgGradient: "from-[#ff3e3e]/20 via-black to-transparent",
   },
 ]
@@ -34,7 +34,7 @@ const WhatCanItDo: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl title-font text-[#17fa22] mb-24 text-center"
+          className="text-5xl title-font text-[#ff3e3e] mb-24 text-center"
         >
           DUAL THREAT AGENT
         </motion.h2>
@@ -75,13 +75,6 @@ const WhatCanItDo: React.FC = () => {
                 <p className="text-gray-300 text-lg mb-6 leading-relaxed">
                   {feature.description}
                 </p>
-
-                {/* Tech detail badge */}
-                <div className="bg-[#ff3e3e]/10 px-4 py-2 rounded-full inline-block border border-[#ff3e3e]/20">
-                  <span className="text-sm text-[#ff3e3e] font-mono">
-                    {feature.techDetail}
-                  </span>
-                </div>
               </div>
             </motion.div>
           ))}
