@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-black/90 border-t border-[#ff3e3e]/20 py-12">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/*  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-[#ff3e3e] text-xl mb-4">Contact Us</h3>
             <div className="space-y-2">
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
         </div>
-
+ */}
         <div className="mt-8 pt-8 border-t border-[#ff3e3e]/20 text-center text-gray-500">
           {new Date().getFullYear()} Agent Roasty. All rights reserved.
         </div>
