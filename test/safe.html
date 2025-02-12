@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Safe Wallet Test</title>
+    <style>
+      body {
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #1a1a1a, #2d2d2d);
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: rgba(30, 30, 30, 0.9);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 500px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .card {
+        background: linear-gradient(45deg, #ff3e3e20, #ff5e3e20);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255, 62, 62, 0.2);
+      }
+      h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, #ff3e3e, #ff5e3e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      button {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        background: #ff3e3e;
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background: #ff5e3e;
+        transform: translateY(-2px);
+      }
+      #status {
+        text-align: center;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .address {
+        font-family: monospace;
+        word-break: break-all;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Safe Wallet Test</h1>
+      <div class="card">
+        <button id="connectButton">Connect Wallet</button>
+        <div id="status">Not Connected</div>
+      </div>
+    </div>
+
+    <script>
+      const connectButton = document.getElementById("connectButton")
+      const statusDiv = document.getElementById("status")
+
+      async function connectWallet() {
+        if (typeof window.ethereum === "undefined") {
+          statusDiv.innerHTML =
+            "Please install MetaMask!<br>Get it from metamask.io"
+          return
+        }
+
+        try {
+          // Request account access
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          })
+
+          const account = accounts[0]
+          statusDiv.innerHTML = `Connected!<br><div class="address">${account}</div>`
+          connectButton.textContent = "Connected"
+
+          // Listen for account changes
+          window.ethereum.on("accountsChanged", accounts => {
+            if (accounts.length === 0) {
+              statusDiv.textContent = "Disconnected"
+              connectButton.textContent = "Connect Wallet"
+            } else {
+              statusDiv.innerHTML = `Connected!<br><div class="address">${accounts[0]}</div>`
+            }
+          })
+        } catch (error) {
+          console.error("Connection error:", error)
+          statusDiv.textContent = error.message
+        }
+      }
+
+      connectButton.addEventListener("click", connectWallet)
+    </script>
+  </body>
+</html>

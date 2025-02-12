@@ -10,6 +10,7 @@ import { BACKGROUND_IMAGES } from "./config/images"
 import BackToTop from "./components/BackToTop"
 import HowItWorks from "./components/HowItWorks"
 import WhatCanItDo from "./components/WhatCanItDo"
+import WalletConnect from "./components/WalletConnect"
 
 import {
   INITIAL_ROAST_COUNT,
@@ -291,34 +292,7 @@ export default function App() {
                 }}
                 className="absolute inset-0 bg-[#ff3e3e] rounded-lg blur-xl"
               />
-              <motion.button
-                animate={{
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                whileHover={{
-                  scale: 1.05,
-                  transition: { duration: 0.2 },
-                }}
-                onClick={() => {
-                  document
-                    .getElementById("roast-form")
-                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
-                }}
-                className="relative group bg-[#ff3e3e] hover:bg-[#ff5555] 
-                          text-white px-8 py-3
-                          text-xl font-bold rounded-lg 
-                          transform transition-all duration-200 
-                          shadow-lg hover:shadow-red-600/50 
-                          border-b-4 border-[#cc0000]
-                          hover:border-b-2 hover:translate-y-[2px] pricedown-font"
-              >
-                DEPLOY AGENT
-              </motion.button>
+              <WalletConnect />
             </div>
 
             {/* Try It Out Button */}
@@ -327,14 +301,12 @@ export default function App() {
               onClick={() => {
                 window.open("https://discord.gg/your-test-server", "_blank")
               }}
-              className="text-[#ff3e3e] hover:text-white px-4 py-1.5 
-                        text-sm font-semibold rounded-md
+              className="text-[#ff3e3e]/70 hover:text-[#ff3e3e] text-sm font-medium
                         transform transition-all duration-200
-                        flex items-center gap-2
-                        border border-[#ff3e3e]/30 hover:bg-[#ff3e3e]/20"
+                        flex items-center gap-2"
             >
-              Try Roasty in Discord
-              <ChevronRight size={14} />
+              Join our test server
+              <ChevronRight size={16} />
             </motion.button>
           </motion.div>
 
