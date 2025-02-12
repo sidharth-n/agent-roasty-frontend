@@ -23,7 +23,7 @@ const steps = [
     icon: Coins,
     title: "SUSTAIN",
     description:
-      "Community tips keep agent running - auto-refunds excess to DAO",
+      "Limited free roasts - community tips keep agent running - excess to treasury/funds",
   },
 ]
 

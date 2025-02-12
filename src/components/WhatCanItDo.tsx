@@ -7,7 +7,7 @@ const features = [
     icon: MessageSquare,
     title: "TEXT ROASTS",
     description:
-      "Roasty is trained on a vast library of Twitter and YouTube transcripts to craft responses that embody the essence of a playful roast culture. Prepare for clever comebacks, biting humor, and a dash of sarcasm that resonates with your community's unique vibe.",
+      "Roasty is trained on a vast library of Tweets and YouTube transcripts of roasts/meme contents to craft responses that embody the essence of a popular roast culture. Prepare for clever comebacks, biting humor, and a dash of sarcasm that resonates with your community's unique vibe.",
     // Tech: elizaOS agent framework + Venice API for text generation
     bgGradient: "from-[#ff3e3e]/20 via-black to-transparent",
   },

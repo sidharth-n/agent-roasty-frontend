@@ -30,8 +30,11 @@ const WarningSection: React.FC = () => {
             </p>
             <div className="mt-6 p-4 bg-[#ff3e3e]/10 rounded-lg border border-[#ff3e3e]/30">
               <p className="text-sm font-medium">
-                Powered by elizaOS agent framework and Venice API for secure,
-                private, and ethical AI interactions.
+                Powered by elizaOS agent framework and{" "}
+                <a href="https://venice.ai/home" className="text-[#ff3e3e]">
+                  Venice API
+                </a>{" "}
+                for secure, private, and ethical AI interactions.
               </p>
             </div>
           </div>

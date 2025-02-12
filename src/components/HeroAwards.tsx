@@ -1,30 +1,30 @@
-import React from 'react';
-import { Trophy, Star, Award } from 'lucide-react';
+import React from "react"
+import { Flame, Shield, Sword } from "lucide-react"
 
 const awards = [
   {
-    icon: Trophy,
-    text: "#1 Fun AI App of 2024"
+    icon: Flame,
+    text: "UNCENSORED",
   },
   {
-    icon: Star,
-    text: "Most Creative Roasts"
+    icon: Shield,
+    text: "PRIVATE",
   },
   {
-    icon: Award,
-    text: "Unlimited Laughs"
-  }
-];
+    icon: Sword,
+    text: "SAVAGE",
+  },
+]
 
 const HeroAwards: React.FC = () => {
-  const [currentAward, setCurrentAward] = React.useState(0);
+  const [currentAward, setCurrentAward] = React.useState(0)
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentAward((prev) => (prev + 1) % awards.length);
-    }, 2000); // Change every 4 seconds
-    return () => clearInterval(timer);
-  }, []);
+      setCurrentAward(prev => (prev + 1) % awards.length)
+    }, 2000) // Change every 4 seconds
+    return () => clearInterval(timer)
+  }, [])
 
   return (
     <>
@@ -85,22 +85,24 @@ const HeroAwards: React.FC = () => {
 
       <div className="hero-awards-container">
         {awards.map((award, index) => {
-          const Icon = award.icon;
-          const isActive = currentAward === index;
+          const Icon = award.icon
+          const isActive = currentAward === index
 
           return (
             <div
               key={index}
-              className={`award-item ${isActive ? 'active glitch' : 'inactive'}`}
+              className={`award-item ${
+                isActive ? "active glitch" : "inactive"
+              }`}
             >
               <Icon className="w-6 h-6" />
               <span>{award.text}</span>
             </div>
-          );
+          )
         })}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HeroAwards;
+export default HeroAwards

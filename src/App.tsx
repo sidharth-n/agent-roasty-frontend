@@ -270,54 +270,71 @@ export default function App() {
           {/* Original HeroAwards */}
           <HeroAwards />
 
-          {/* Mission Start Button - New Addition */}
+          {/* Mission Start Buttons */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="relative"
+            className="flex flex-col gap-3 items-center"
           >
-            {/* Pulsing background effect */}
-            <motion.div
-              animate={{
-                scale: [1, 1.05, 1],
-                opacity: [0.15, 0.25, 0.15],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 bg-[#ff3e3e] rounded-lg blur-xl"
-            />
+            {/* Original Deploy Button */}
+            <div className="relative">
+              <motion.div
+                animate={{
+                  scale: [1, 1.05, 1],
+                  opacity: [0.15, 0.25, 0.15],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 bg-[#ff3e3e] rounded-lg blur-xl"
+              />
+              <motion.button
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  transition: { duration: 0.2 },
+                }}
+                onClick={() => {
+                  document
+                    .getElementById("roast-form")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }}
+                className="relative group bg-[#ff3e3e] hover:bg-[#ff5555] 
+                          text-white px-8 py-3
+                          text-xl font-bold rounded-lg 
+                          transform transition-all duration-200 
+                          shadow-lg hover:shadow-red-600/50 
+                          border-b-4 border-[#cc0000]
+                          hover:border-b-2 hover:translate-y-[2px] pricedown-font"
+              >
+                DEPLOY AGENT
+              </motion.button>
+            </div>
 
+            {/* Try It Out Button */}
             <motion.button
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.2 },
-              }}
+              whileHover={{ scale: 1.02 }}
               onClick={() => {
-                document
-                  .getElementById("roast-form")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                window.open("https://discord.gg/your-test-server", "_blank")
               }}
-              className="relative group bg-[#ff3e3e] hover:bg-[#ff5555] 
-                         text-white px-8 py-3
-                         text-xl font-bold rounded-lg 
-                         transform transition-all duration-200 
-                         shadow-lg hover:shadow-red-600/50 
-                         border-b-4 border-[#cc0000]
-                         hover:border-b-2 hover:translate-y-[2px] pricedown-font"
+              className="text-[#ff3e3e] hover:text-white px-4 py-1.5 
+                        text-sm font-semibold rounded-md
+                        transform transition-all duration-200
+                        flex items-center gap-2
+                        border border-[#ff3e3e]/30 hover:bg-[#ff3e3e]/20"
             >
-              DEPLOY AGENT
+              Try Roasty in Discord
+              <ChevronRight size={14} />
             </motion.button>
           </motion.div>
 
