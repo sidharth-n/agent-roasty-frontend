@@ -8,6 +8,7 @@ import WarningSection from "./components/WarningSection"
 import HeroAwards from "./components/HeroAwards"
 import { BACKGROUND_IMAGES } from "./config/images"
 import BackToTop from "./components/BackToTop"
+import HowItWorks from "./components/HowItWorks"
 
 import {
   INITIAL_ROAST_COUNT,
@@ -394,8 +395,9 @@ export default function App() {
           />
         )}
       </section>
-      {/* 
-      <SampleSection /> */}
+
+      {/* How It Works Section */}
+      <HowItWorks />
 
       {/* Roast Form Section */}
       <section
