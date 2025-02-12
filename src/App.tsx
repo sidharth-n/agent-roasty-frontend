@@ -422,7 +422,7 @@ export default function App() {
         }}
       >
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-4xl title-font text-[#ff3e3e] mb-12 text-center">
+          <h2 className="text-4xl title-font text-[#000000] mb-12 text-center">
             FAQ
           </h2>
           <FAQ />

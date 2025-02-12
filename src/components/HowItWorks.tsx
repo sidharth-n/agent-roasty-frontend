@@ -31,7 +31,7 @@ const HowItWorks: React.FC = () => {
   return (
     <section className="py-16 relative bg-[#0a0a0a]/90">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl title-font text-[#ff3e3e] mb-12 text-center">
+        <h2 className="text-4xl title-font text-[#000000] mb-12 text-center">
           HOW IT WORKS
         </h2>
 
