@@ -1,10 +1,53 @@
 import React, { useState, useEffect } from "react"
 import { ethers } from "ethers"
 import { motion } from "framer-motion"
+import Safe, { EthAdapter } from "@safe-global/protocol-kit"
+
+// Sepolia network config
+const SEPOLIA_CONFIG = {
+  chainId: "0xaa36a7",
+  name: "Sepolia",
+  rpcUrl: "https://rpc.sepolia.org",
+  blockExplorer: "https://sepolia.etherscan.io",
+}
 
 const WalletConnect: React.FC = () => {
-  const [account, setAccount] = useState<string>("")
+  const [account, setAccount] = useState("")
+  const [safeAddress, setSafeAddress] = useState("")
   const [loading, setLoading] = useState(false)
+  const [networkOk, setNetworkOk] = useState(false)
+
+  // Check if we're on Sepolia
+  async function checkNetwork() {
+    const chainId = await window.ethereum.request({ method: "eth_chainId" })
+    return chainId === SEPOLIA_CONFIG.chainId
+  }
+
+  // Switch to Sepolia
+  async function switchToSepolia() {
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: SEPOLIA_CONFIG.chainId }],
+      })
+    } catch (error: any) {
+      // If Sepolia is not added to MetaMask
+      if (error.code === 4902) {
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              chainId: SEPOLIA_CONFIG.chainId,
+              chainName: SEPOLIA_CONFIG.name,
+              nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+              rpcUrls: [SEPOLIA_CONFIG.rpcUrl],
+              blockExplorerUrls: [SEPOLIA_CONFIG.blockExplorer],
+            },
+          ],
+        })
+      }
+    }
+  }
 
   async function connectWallet() {
     if (!window.ethereum) {
@@ -14,28 +57,49 @@ const WalletConnect: React.FC = () => {
 
     try {
       setLoading(true)
-      // Request account access
+
+      // First connect MetaMask
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       })
       setAccount(accounts[0])
+
+      // Make sure we're on Sepolia
+      if (!(await checkNetwork())) {
+        await switchToSepolia()
+      }
+      setNetworkOk(true)
+
+      // Now setup Safe
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      const signer = await provider.getSigner()
+
+      // Create ethAdapter
+      const ethAdapter = new EthAdapter({
+        ethers,
+        signerOrProvider: signer,
+      })
+
+      // Initialize Safe
+      const safeSdk = await Safe.create({ ethAdapter })
+
+      // Get Safe address
+      const safeAddress = await safeSdk.getAddress()
+      setSafeAddress(safeAddress)
+      console.log("Safe ready at:", safeAddress)
     } catch (error) {
       console.error("Connection error:", error)
-      alert("Failed to connect wallet")
+      alert("Failed to connect. Make sure you're on Sepolia network!")
     } finally {
       setLoading(false)
     }
   }
 
-  // Listen for account changes
+  // Watch for network changes
   useEffect(() => {
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts: string[]) => {
-        if (accounts.length === 0) {
-          setAccount("")
-        } else {
-          setAccount(accounts[0])
-        }
+      window.ethereum.on("chainChanged", async () => {
+        setNetworkOk(await checkNetwork())
       })
     }
   }, [])
@@ -66,8 +130,10 @@ const WalletConnect: React.FC = () => {
     >
       {loading
         ? "Connecting..."
-        : account
-        ? `Connected: ${account.slice(0, 6)}...${account.slice(-4)}`
+        : !networkOk && account
+        ? "Switch to Sepolia"
+        : safeAddress
+        ? `Safe Ready: ${safeAddress.slice(0, 6)}...${safeAddress.slice(-4)}`
         : "DEPLOY AGENT"}
     </motion.button>
   )

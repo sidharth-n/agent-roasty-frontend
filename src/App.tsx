@@ -299,7 +299,7 @@ export default function App() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               onClick={() => {
-                window.open("https://discord.gg/your-test-server", "_blank")
+                window.open("https://discord.gg/4RFth2Mk", "_blank")
               }}
               className="text-[#ff3e3e]/70 hover:text-[#ff3e3e] text-sm font-medium
                         transform transition-all duration-200
