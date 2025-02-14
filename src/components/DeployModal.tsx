@@ -160,8 +160,8 @@ const DeployModal: React.FC<DeployModalProps> = ({ isOpen, onClose }) => {
                 </h2>
                 <p className="text-gray-300 mb-6">
                   Create a Safe Smart Account to handle payments/tips and
-                  conduct contests. You and Agent Roasty will be the signers of
-                  this account.
+                  conduct contests with agent Roasty. You and Roasty will be the
+                  signers of this account.
                 </p>
                 <div className="flex gap-4">
                   <button
