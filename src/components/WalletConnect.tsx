@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { ethers } from "ethers"
 import { motion } from "framer-motion"
 import Safe, { EthAdapter } from "@safe-global/protocol-kit"
+import DeployModal from "./DeployModal"
 
 // Sepolia network config
 const SEPOLIA_CONFIG = {
@@ -16,6 +17,7 @@ const WalletConnect: React.FC = () => {
   const [safeAddress, setSafeAddress] = useState("")
   const [loading, setLoading] = useState(false)
   const [networkOk, setNetworkOk] = useState(false)
+  const [showDeployModal, setShowDeployModal] = useState(false)
 
   // Check if we're on Sepolia
   async function checkNetwork() {
@@ -57,39 +59,16 @@ const WalletConnect: React.FC = () => {
 
     try {
       setLoading(true)
-
-      // First connect MetaMask
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
       })
       setAccount(accounts[0])
 
-      // Make sure we're on Sepolia
-      if (!(await checkNetwork())) {
-        await switchToSepolia()
-      }
-      setNetworkOk(true)
-
-      // Now setup Safe
-      const provider = new ethers.BrowserProvider(window.ethereum)
-      const signer = await provider.getSigner()
-
-      // Create ethAdapter
-      const ethAdapter = new EthAdapter({
-        ethers,
-        signerOrProvider: signer,
-      })
-
-      // Initialize Safe
-      const safeSdk = await Safe.create({ ethAdapter })
-
-      // Get Safe address
-      const safeAddress = await safeSdk.getAddress()
-      setSafeAddress(safeAddress)
-      console.log("Safe ready at:", safeAddress)
+      // After successful connection, show deploy modal
+      setShowDeployModal(true)
     } catch (error) {
       console.error("Connection error:", error)
-      alert("Failed to connect. Make sure you're on Sepolia network!")
+      alert("Failed to connect wallet")
     } finally {
       setLoading(false)
     }
@@ -105,37 +84,44 @@ const WalletConnect: React.FC = () => {
   }, [])
 
   return (
-    <motion.button
-      animate={{
-        scale: [1, 1.2, 1],
-      }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      whileHover={{
-        scale: 1.05,
-        transition: { duration: 0.2 },
-      }}
-      onClick={connectWallet}
-      className="relative group bg-[#ff3e3e] hover:bg-[#ff5555] 
-                text-white px-8 py-3
-                text-xl font-bold rounded-lg 
-                transform transition-all duration-200 
-                shadow-lg hover:shadow-red-600/50 
-                border-b-4 border-[#cc0000]
-                hover:border-b-2 hover:translate-y-[2px] pricedown-font"
-      disabled={loading}
-    >
-      {loading
-        ? "Connecting..."
-        : !networkOk && account
-        ? "Switch to Sepolia"
-        : safeAddress
-        ? `Safe Ready: ${safeAddress.slice(0, 6)}...${safeAddress.slice(-4)}`
-        : "DEPLOY AGENT"}
-    </motion.button>
+    <>
+      <motion.button
+        animate={{
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.05,
+          transition: { duration: 0.2 },
+        }}
+        onClick={connectWallet}
+        className="relative group bg-[#ff3e3e] hover:bg-[#ff5555] 
+                  text-white px-8 py-3
+                  text-xl font-bold rounded-lg 
+                  transform transition-all duration-200 
+                  shadow-lg hover:shadow-red-600/50 
+                  border-b-4 border-[#cc0000]
+                  hover:border-b-2 hover:translate-y-[2px] pricedown-font"
+        disabled={loading}
+      >
+        {loading
+          ? "Connecting..."
+          : !networkOk && account
+          ? "DEPLOY AGENT"
+          : safeAddress
+          ? `Safe Ready: ${safeAddress.slice(0, 6)}...${safeAddress.slice(-4)}`
+          : "SUBSCRIBE AGENT"}
+      </motion.button>
+
+      <DeployModal
+        isOpen={showDeployModal}
+        onClose={() => setShowDeployModal(false)}
+      />
+    </>
   )
 }
 
