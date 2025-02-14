@@ -1,29 +1,30 @@
 import React from "react"
-import { Wallet, Settings, Bot, Coins } from "lucide-react"
+import { CreditCard, Wallet, Bot, Coins } from "lucide-react"
 
 const steps = [
   {
-    icon: Wallet,
-    title: "CONNECT",
-    description: "Login with Safe Smart Account - secure & crypto-native",
+    icon: CreditCard,
+    title: "SUBSCRIBE",
+    description:
+      "Subscribe to Agent Roasty for 0.005 Sepolia ETH monthly. Get access to premium roasting capabilities.",
   },
   {
-    icon: Settings,
-    title: "CONFIGURE",
+    icon: Wallet,
+    title: "SETUP SAFE (OPTIONAL)",
     description:
-      "Customize your agent's personality, roast style & knowledge base",
+      "Create a Community Safe Account - you and Agent Roasty will be the signers. Perfect for managing tips and running contests.",
   },
   {
     icon: Bot,
     title: "DEPLOY",
     description:
-      "Add to your community for free - works with Discord & Telegram",
+      "Add Agent Roasty to your Discord server and let the roast show begin! Works instantly after subscription.",
   },
   {
     icon: Coins,
-    title: "SUSTAIN",
+    title: "ENGAGE",
     description:
-      "Limited free roasts - community tips keep agent running - excess to treasury/funds",
+      "Community members can tip the agent, participate in roast contests, and more using the Safe Account.",
   },
 ]
 
