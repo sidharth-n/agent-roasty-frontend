@@ -4,13 +4,13 @@
 
 _Your Community's AI-Powered Roast Master, built for Safe Agentathon February 2025_
 
-[![Built on ElizaOS](https://img.shields.io/badge/Built%20on-ElizaOS-9cf.svg)](https://elizaos.com)
-[![Powered by Venice](https://img.shields.io/badge/Powered%20by-Venice-ff69b4.svg)](https://venice.com)
-[![Built with Safe](https://img.shields.io/badge/Built%20with-Safe-00CD98.svg)](https://safe.global)
+[![Built on ElizaOS](https://img.shields.io/badge/Built%20on-ElizaOS-9cf.svg)](https://www.elizaos.ai/)
+[![Powered by Venice](https://img.shields.io/badge/Powered%20by-Venice-ff69b4.svg)](https://venice.ai/home)
+[![Built with Safe](https://img.shields.io/badge/Built%20with-Safe-00CD98.svg)](https://safe.global/)
 [![Built for Discord](https://img.shields.io/badge/Built%20for-Discord-5865F2.svg)](https://discord.gg/4RFth2Mk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Try Demo](https://discord.gg/4RFth2Mk) · [Watch Demo](https://youtu.be/demo) · [Report Bug](https://github.com/yourusername/agent-roasty-frontend/issues)
+[Try Demo](https://discord.gg/4RFth2Mk) · [Watch Demo](https://youtu.be/demo) · [Report Bug](https://github.com/sidharth-n/agent-roasty-frontend/issues)
 
 </div>
 
@@ -39,7 +39,7 @@ Agent Roasty is a revolutionary Discord bot that combines AI-powered roasts with
 
 ### Installation
 
-1. Clone the repository(git clone https://github.com/yourusername/agent-roasty-frontend.git)
+1. Clone the repository(git clone https://github.com/sidharth-n/agent-roasty-frontend.git)
 2. Install dependencies
 
 ```bash
@@ -117,9 +117,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🙏 Acknowledgments
 
-- [Safe Global](https://safe.global)
-- [elizaOS Framework](https://eliza.os)
-- [Venice API](https://venice.ai)
+- [Safe Global](https://safe.global/)
+- [elizaOS Framework](https://www.elizaos.ai/)
+- [Venice API](https://venice.ai/home)
 
 <div align="center">
 
