@@ -160,7 +160,8 @@ const DeployModal: React.FC<DeployModalProps> = ({ isOpen, onClose }) => {
                 </h2>
                 <p className="text-gray-300 mb-6">
                   Create a Safe Smart Account to handle payments/tips and
-                  conduct contests
+                  conduct contests. You and Agent Roasty will be the signers of
+                  this account.
                 </p>
                 <div className="flex gap-4">
                   <button
@@ -192,15 +193,14 @@ const DeployModal: React.FC<DeployModalProps> = ({ isOpen, onClose }) => {
                       Safe Account Created!
                     </h2>
                     <p className="text-gray-300 mb-4">
-                      Your Safe Address:
+                      Please save your Safe Account address:
                       <span className="block font-mono text-sm bg-black/50 p-2 rounded mt-2">
                         {safeAddress}
                       </span>
                     </p>
                     <p className="text-gray-300 mb-6">
-                      You are one of the signers. Agent Roasty (
-                      {AGENT_ROASTY_ADDRESS.slice(0, 6)}...
-                      {AGENT_ROASTY_ADDRESS.slice(-4)}) is the other signer.
+                      You and Agent Roasty are now the signers of this account.
+                      Make sure to save this address for future reference!
                     </p>
                   </>
                 ) : (
